@@ -1,7 +1,7 @@
 const gameCanvas = document.getElementById('game'),
     ctx = gameCanvas.getContext('2d'),
     hpElem = document.getElementById('hp'),
-    enemyKilledElem = document.getElementById('enemyKilled'),
+    enemyKilledElem = document.getElementById('enemykilled'),
     keyInput = document.getElementById('KeysInput'),
     moveButton = document.getElementById("btn-move"),
     settingsButton = document.getElementById('btn-settings'),
@@ -155,6 +155,10 @@ function walk(KeyType) {
 function draw() {
     ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
 
+    if (player.Hp > 0) {
+        ctx.fillStyle = 'darkred';
+        ctx.fillRect(player.x, player.y + player.width / 1.7, player.width, player.height);
+    }
     for (let i = 0; i < enemy.length; i++) {
         // Make the player look like 3d
         // let PlyoffsetX = ((player.x - player.width / 2) - gameCanvas.width / 2) * 0.05;
@@ -170,19 +174,14 @@ function draw() {
         // ctx.fillRect(enemy[i].x + offsetX, enemy[i].y, enemy[i].width, enemy[i].height + enemy[i].width / offsetY);
         // ctx.fillRect(enemy[i].x, enemy[i].y + enemy[i].width / offsetY, enemy[i].width, enemy[i].height);
 
-        if (player.Hp > 0) {
-            ctx.fillStyle = 'darkred';
-            ctx.fillRect(player.x, player.y + player.width / 1.7, player.width, player.height);
-        }
         ctx.fillStyle = 'darkblue';
         ctx.fillRect(enemy[i].x, enemy[i].y + enemy[i].width / 1.7, enemy[i].width, enemy[i].height);
         ctx.fillStyle = 'blue';
         ctx.fillRect(enemy[i].x, enemy[i].y, enemy[i].width, enemy[i].height);
 
-        if (player.Hp > 0) {
-            ctx.fillStyle = 'red';
-            ctx.fillRect(player.x, player.y, player.width, player.height);
-        }
+    } if (player.Hp > 0) {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(player.x, player.y, player.width, player.height);
     }
 }
 
@@ -202,15 +201,18 @@ let cursor = document.getElementById('cursor');
 document.body.addEventListener("mousemove", function (e) {
     let x = e.clientX,
         y = e.clientY;
-        cursor.style.left = x + "px";
-        cursor.style.top = y + "px";
-    });
+    cursor.style.left = x + "px";
+    cursor.style.top = y + "px";
+});
 
 function check() {
     if (isHome == true) {
         root.style.setProperty('--gameBgColor', "rgb(130, 50, 0)");
     } else {
         root.style.setProperty('--gameBgColor', "lightgreen");
+    }
+    if (player.Hp < 0) {
+        player.Hp = 0
     }
     setTimeout(check);
 }
@@ -301,6 +303,7 @@ function attack() {
                 enemy[i].Hp -= player.damage;
                 console.log(player.damage)
             } else if (enemy[i].Hp <= 0) {
+                enemyKiled++;
                 enemy.splice(i, 1)
             }
         }
@@ -340,6 +343,7 @@ function closeSettings() {
 
 function tick() {
     hpElem.innerHTML = player.Hp;
+    enemyKilledElem.innerHTML = enemyKiled;
     walk(keyInput.value);
     draw();
     requestAnimationFrame(tick);
