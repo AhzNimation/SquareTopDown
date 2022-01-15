@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahz Top Down</title>
+</head>
+
+<body>
+    <div class="hp">
+        <h1>❤ : <span id="hp"> . . . .</span></h1>
+    </div>
+    <div class="ek">
+        <h1>🔪 : <span id="enemykilled"> . . . .</span></h1>
+    </div>
+    <div id="cursor"><img src="../Image/cursor.png" alt="Cursor"></div>
+    <canvas id="game"></canvas>
+    <div id="btn-move" class="move-btn-container">
+        <button onmouseup="wu = false;" onmousedown="wu = true">^</button>
+        <button onmouseup="wl = false;" onmousedown="wl = true"><</button>
+        <button onmouseup="wd = false;" onmousedown="wd = true">v</button>
+        <button onmouseup="wr = false;" onmousedown="wr = true">></button><br>
+        <button onclick="attack()">⚔</button>
+    </div>
+    <button id="btn-settings" onclick="settingsOpened=true; openSettings()"></button>
+    <div id="settings">
+        <h3>If you want walk with W, A, S, D keys, type REGULAR_KEYS</h3>
+        <h3>If you want walk with Arrow keys, type ARROW_KEYS</h3>
+        <h3>In default or if you typing other words, the move type will be Button</h3>
+        <input type="text" name="" id="KeysInput" placeholder="Write type to move here">
+        <button onclick="settingsOpened=false; closeSettings()">X</button>
+    </div>
+    <script src="../JS/script.js"></script>
+</body>
+
+</html>

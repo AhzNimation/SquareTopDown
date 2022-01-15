@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../CSS/menu.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahz Top Down Menu</title>
+</head>
+
+<body>
+    <h1>Ahz Top Down</h1>
+    <a href="game.html">
+        <button>Play</button>
+    </a>
+    <button onclick="openHowToPlay()">How To Play?</button>
+    <div id="how-to-play" class="hide">
+        <h3>
+            By default, if you want to move, you will move using a button.
+            But you can change it.
+        </h3>
+        <h3>1. When ingame go to Settings with click button in top right</h3>
+        <h3>2. After that write what move type do you want!</h3>
+        <button onclick="closeHowToPlay()">X</button>
+    </div>
+    <div class="player"></div>
+    <div id="player-spk">HI!</div>
+    <script src="../JS/menu.js"></script>
+</body>
+
+</html>
