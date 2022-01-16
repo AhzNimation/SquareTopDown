@@ -142,9 +142,11 @@ function walk(KeyType) {
             }
             if (wd == true) {
                 player.y += player.speed;
-            } if (wr == true) {
+            } 
+            if (wr == true) {
                 player.x += player.speed;
-            } if (wl == true) {
+            } 
+            if (wl == true) {
                 player.x -= player.speed;
             }
             moveButton.classList.remove('hide');

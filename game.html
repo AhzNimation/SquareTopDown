@@ -19,10 +19,10 @@
     <div id="cursor"><img src="Image/cursor.png" alt="Cursor"></div>
     <canvas id="game"></canvas>
     <div id="btn-move" class="move-btn-container">
-        <button onmouseup="wu = false;" onmousedown="wu = true">^</button>
-        <button onmouseup="wl = false;" onmousedown="wl = true"><</button>
-        <button onmouseup="wd = false;" onmousedown="wd = true">v</button>
-        <button onmouseup="wr = false;" onmousedown="wr = true">></button><br>
+        <button onclick="wu = false" onpointerdown="wu = true">^</button>
+        <button onclick="wl = false" onpointerdown="wl = true"><</button>
+        <button onclick="wd = false" onpointerdown="wd = true">v</button>
+        <button onclick="wr = false" onpointerdown="wr = true">></button><br>
         <button onclick="attack()">⚔</button>
     </div>
     <button id="btn-settings" onclick="settingsOpened=true; openSettings()"></button>
